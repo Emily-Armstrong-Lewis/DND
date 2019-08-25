@@ -1,7 +1,7 @@
 "use strict"
 //currently .preventDefault() isn't working and neither is the onclick for the submit button.
-let runBtn = document.getElementById("runBtn").addEventListener = ("click", function(event){
-  event.preventDefault();
+document.getElementById("diceRollerForm").addEventListener("click", function(event){
+  event.preventDefault()
 });
 
 let rollDice = function(){
@@ -17,7 +17,7 @@ let rollDice = function(){
   name=parseInt(name);
   let modifier = document.getElementById("modifier").value;
   modifier=parseInt(modifier);
-  console.log(quantity, name, modifier);
+  console.log(`${quantity}d${name}+${modifier}`);
 
   //will roll the dice the speciied number of times
   while (i < quantity){
@@ -27,27 +27,34 @@ let rollDice = function(){
   function roll(numb){
     let x= Math.floor(Math.random()*numb)+1;
     console.log(`You roll a ${numb} sided die and it lands on ${x}.`);
+    //document.getElementById('results').innerHTML = `You roll a ${numb} sided die and it lands on ${x}.`;
     return x;
   };
   
  //assigns the total from this single roll to the total of all rolls.
- console.log(a);
  a = a+roll(name);
-  console.log(a);
+
   i++;
+
 };
 //adds the players modifier
- console.log(`this is ${a}`);
- console.log(modifier);
 let b = a + modifier;
 console.log(`You rolled a total of ${a} plus your modifier of ${modifier} brings you to a total of ${b}`);
-return b;
+
+let m = document.createElement("p");
+let n = document.createTextNode(`You rolled a total of ${b}.`);
+m.appendChild(n);
+let o = document.createElement("p");
+let p = document.createTextNode(`Your roll (${a}) plus your modifier (${modifier}) equals ${b}.`);
+m.appendChild(o);
+m.appendChild(p)
+document.getElementById('results').appendChild(m);
+
 };
 
-
-runBtn.addEventListener = ("click", rollDice());
-
-
+document.getElementById("runBtn").addEventListener("click", function() {
+    rollDice();
+});
 //creates a dice class object that can have the sides modified. Will be useful for useful functionalities involving more than one type of die.
 /*class Dice {
    constructor (sides){
@@ -55,3 +62,6 @@ runBtn.addEventListener = ("click", rollDice());
    };
   };*/
  //let d6 = new Dice(name);
+
+
+ //route to end?

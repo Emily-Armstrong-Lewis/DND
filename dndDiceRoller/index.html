@@ -12,16 +12,21 @@
     </header>
     <main>
       <h2>RPG Dice Roller</h2>
-      <form action="" method="post">
+      <form id="diceRollerForm" action="" target="_self" method="post">
         <p>Please enter the number of dice, the number of sides, and any modifiers used for your roll.</p>
         <label for="quantity">Number of dice</label>
-        <input type="text" id="quantity" maxlength="2" value="2">
+        <input type="text" id="quantity" maxlength="2">
         <label for ="name">D</label>
-        <input type="text" id="name" maxlength="3" value="6">
+        <input type="text" id="name" maxlength="3">
         <label for="modifier">Modifier</label>
-        <input type="text" id="modifier" maxlength="3" value="4">
+        <input type="text" id="modifier" maxlength="3">
         <input type="submit" value="run" id="runBtn">
       </form>
+      <div id="resultBox">
+        <h3>Results go here:</h3>
+        <p>Note: The newest will appear at the bottom</p>
+        <div id="results"></div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
